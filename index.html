@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宝安创业路 · 三区总览</title>
+  <link rel="stylesheet" href="css/deck.css" />
+</head>
+<body>
+  <div class="viewport">
+    <div class="stage" id="stage">
+      <!-- Page 1: overall -->
+      <section class="slide is-active" data-page="1">
+        <img src="assets/slide-overview.png" alt="三类创新生态 三种美好生活" />
+      </section>
+
+      <!-- Page 2: 宝安中心区 / 海心 -->
+      <section class="slide" data-page="2">
+        <img src="assets/slide-baozhong.png" alt="海心 · 宝安中心区" />
+      </section>
+
+      <!-- Page 3: 灵芝片区 / 城心 -->
+      <section class="slide" data-page="3">
+        <img src="assets/slide-lingzhi.png" alt="城心 · 灵芝片区" />
+      </section>
+
+      <!-- Page 4: 尖岗山片区 / 山心 -->
+      <section class="slide" data-page="4">
+        <img src="assets/slide-jiangangshan.png" alt="山心 · 尖岗山片区" />
+      </section>
+
+      <!-- Shared zoom bridge (overview → baozhong) -->
+      <div class="zoom-bridge" id="zoomBridge" aria-hidden="true">
+        <img class="zoom-img" src="assets/slide-overview.png" alt="" />
+      </div>
+
+      <div class="hud">
+        <div class="dots" role="tablist" aria-label="页面">
+          <button class="dot is-on" data-to="0" aria-label="第1页 总览"></button>
+          <button class="dot" data-to="1" aria-label="第2页 海心"></button>
+          <button class="dot" data-to="2" aria-label="第3页 城心"></button>
+          <button class="dot" data-to="3" aria-label="第4页 山心"></button>
+        </div>
+      </div>
+      <div class="hint">← → / Space</div>
+      <div class="page-label" id="pageLabel">1 / 4</div>
+    </div>
+  </div>
+  <script src="js/deck.js"></script>
+</body>
+</html>
