@@ -9,30 +9,94 @@
 <body>
   <div class="viewport">
     <div class="stage" id="stage">
-      <!-- Page 1: overall -->
-      <section class="slide is-active" data-page="1">
-        <img src="assets/slide-overview.png" alt="三类创新生态 三种美好生活" />
+
+      <!-- Page 1: Overview -->
+      <section class="slide slide-overview is-active" data-page="1">
+        <div class="ov-top">
+          <div class="ov-col">
+            <div class="ov-district">[宝安中心区]</div>
+            <div class="ov-en">BAY HEART · BAOZHONG</div>
+            <div class="ov-claim">具身智能港 × 海城大都会</div>
+            <div class="ov-claim-en">Embodied AI Harbor × Bay City Metropolis</div>
+          </div>
+          <div class="ov-col">
+            <div class="ov-district">[灵芝片区]</div>
+            <div class="ov-en">CITY HEART · LINGZHI</div>
+            <div class="ov-claim">超级个体孵化器 × 潮流市井道街巷</div>
+            <div class="ov-claim-en">Super-Individual Incubator × Trendy Lanes &amp; Alleys</div>
+          </div>
+          <div class="ov-col">
+            <div class="ov-district">[尖岗山片区]</div>
+            <div class="ov-en">MOUNTAIN HEART · JIANGANGSHAN</div>
+            <div class="ov-claim">智能终端创新园 × 湾区山城后花园</div>
+            <div class="ov-claim-en">Intelligent Terminal Innovation Park × GBA Talent Retreat</div>
+          </div>
+        </div>
+        <div class="ov-map">
+          <img src="assets/map-overview.png" alt="三类创新生态总图" />
+        </div>
+        <div class="ov-bottom">
+          <div class="ov-footer-cn">三类创新生态 三种美好生活</div>
+          <div class="ov-footer-en">Three Innovation Ecosystems · Three Ways of Living</div>
+        </div>
       </section>
 
       <!-- Page 2: 宝安中心区 / 海心 -->
-      <section class="slide" data-page="2">
-        <img src="assets/slide-baozhong.png" alt="海心 · 宝安中心区" />
+      <section class="slide slide-district" data-page="2">
+        <div class="map-pane">
+          <img src="assets/map-baozhong.png" alt="宝安中心区" />
+        </div>
+        <aside class="side-panel">
+          <div class="side-inner">
+            <div class="num">1</div>
+            <div class="role">海心</div>
+            <div class="district">[宝安中心区]</div>
+            <div class="en">BAY HEART · BAOZHONG</div>
+            <div class="taglines">
+              <div>具身智能港</div>
+              <div>海城大都会</div>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <!-- Page 3: 灵芝片区 / 城心 -->
-      <section class="slide" data-page="3">
-        <img src="assets/slide-lingzhi.png" alt="城心 · 灵芝片区" />
+      <section class="slide slide-district" data-page="3">
+        <div class="map-pane">
+          <img src="assets/map-lingzhi.png" alt="灵芝片区" />
+        </div>
+        <aside class="side-panel">
+          <div class="side-inner">
+            <div class="num">2</div>
+            <div class="role">城心</div>
+            <div class="district">[灵芝片区]</div>
+            <div class="en">CITY HEART · LINGZHI</div>
+            <div class="taglines">
+              <div>超级个体孵化器</div>
+              <div>潮流市井道街巷</div>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <!-- Page 4: 尖岗山片区 / 山心 -->
-      <section class="slide" data-page="4">
-        <img src="assets/slide-jiangangshan.png" alt="山心 · 尖岗山片区" />
+      <section class="slide slide-district" data-page="4">
+        <div class="map-pane">
+          <img src="assets/map-jiangangshan.png" alt="尖岗山片区" />
+        </div>
+        <aside class="side-panel">
+          <div class="side-inner">
+            <div class="num">3</div>
+            <div class="role">山心</div>
+            <div class="district">[尖岗山片区]</div>
+            <div class="en">MOUNTAIN HEART · JIANGANGSHAN</div>
+            <div class="taglines">
+              <div>智能终端创新园</div>
+              <div>湾区山城后花园</div>
+            </div>
+          </div>
+        </aside>
       </section>
-
-      <!-- Shared zoom bridge (overview → baozhong) -->
-      <div class="zoom-bridge" id="zoomBridge" aria-hidden="true">
-        <img class="zoom-img" src="assets/slide-overview.png" alt="" />
-      </div>
 
       <div class="hud">
         <div class="dots" role="tablist" aria-label="页面">
