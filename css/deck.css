@@ -58,21 +58,26 @@ html, body {
 .slide-overview {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  /* tighter: pull text toward map */
-  padding: 0.55em 1.6em 0.7em;
-  gap: 0.2em;
+  /* converge text toward map / center — not toward edges */
+  padding: 0.35em 0 0.45em;
+  gap: 0.08em;
+  justify-items: center;
 }
 
 .ov-top {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 0.85em;
+  /* narrow band over the map, centered */
+  width: min(72%, 52em);
+  max-width: 100%;
+  gap: 0.45em;
   text-align: center;
   align-items: end;
-  padding-bottom: 0.1em;
+  padding: 0;
+  margin: 0 auto;
 }
 
-.ov-col { padding: 0 0.35em; }
+.ov-col { padding: 0 0.15em; }
 
 .ov-district {
   font-family: var(--serif);
@@ -132,8 +137,10 @@ html, body {
 
 .ov-bottom {
   text-align: center;
-  padding-top: 0.05em;
-  padding-bottom: 0.15em;
+  padding-top: 0;
+  padding-bottom: 0.1em;
+  width: min(72%, 52em);
+  margin: 0 auto;
 }
 
 .ov-footer-cn {
@@ -174,11 +181,10 @@ html, body {
   -webkit-user-drag: none;
 }
 
-/* Page 4: keep mountain mass centered */
+/* Page 4: 尖岗山主体 already centered in asset */
 .slide-district[data-page="4"] .map-pane img {
-  object-position: 72% 48%;
-  transform: scale(1.06);
-  transform-origin: 70% 48%;
+  object-position: center center;
+  transform: none;
 }
 
 /* Soft cream feather between map and side panel (all district pages) */
