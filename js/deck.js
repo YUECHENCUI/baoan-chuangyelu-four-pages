@@ -6,6 +6,7 @@
   const slides = [...document.querySelectorAll('.slide')];
   const dots = [...document.querySelectorAll('.dot')];
   const pageLabel = document.getElementById('pageLabel');
+  const fsBtn = document.getElementById('fsBtn');
 
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -50,6 +51,32 @@
     return fadeTo(target);
   }
 
+  function isFullscreen() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+
+  function updateFsLabel() {
+    if (!fsBtn) return;
+    fsBtn.textContent = isFullscreen() ? '退出全屏' : '全屏';
+    fsBtn.setAttribute('aria-label', fsBtn.textContent);
+  }
+
+  async function toggleFullscreen() {
+    try {
+      if (!isFullscreen()) {
+        const el = document.documentElement;
+        if (el.requestFullscreen) await el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      } else {
+        if (document.exitFullscreen) await document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
+    } catch (err) {
+      console.warn('fullscreen failed', err);
+    }
+    updateFsLabel();
+  }
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
       e.preventDefault();
@@ -63,6 +90,9 @@
     } else if (e.key === 'End') {
       e.preventDefault();
       goTo(TOTAL - 1);
+    } else if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      toggleFullscreen();
     }
   });
 
@@ -72,6 +102,15 @@
       if (!Number.isNaN(t)) goTo(t);
     });
   });
+
+  if (fsBtn) {
+    fsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleFullscreen();
+    });
+  }
+  document.addEventListener('fullscreenchange', updateFsLabel);
+  document.addEventListener('webkitfullscreenchange', updateFsLabel);
 
   let touchX = null;
   document.addEventListener(
@@ -94,4 +133,5 @@
   );
 
   showSlide(0, { instant: true });
+  updateFsLabel();
 })();

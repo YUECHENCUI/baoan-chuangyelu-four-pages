@@ -35,7 +35,6 @@ html, body {
   overflow: hidden;
   background: var(--cream);
   box-shadow: 0 20px 60px rgba(0,0,0,.45);
-  /* scale typography with stage width */
   font-size: calc(min(100vw, calc(100vh * 16 / 9)) / 80);
 }
 
@@ -59,26 +58,28 @@ html, body {
 .slide-overview {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  padding: 1.1em 1.6em 1.4em;
-  gap: 0.55em;
+  /* tighter: pull text toward map */
+  padding: 0.55em 1.6em 0.7em;
+  gap: 0.2em;
 }
 
 .ov-top {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1em;
+  gap: 0.85em;
   text-align: center;
-  align-items: start;
+  align-items: end;
+  padding-bottom: 0.1em;
 }
 
-.ov-col { padding: 0 0.4em; }
+.ov-col { padding: 0 0.35em; }
 
 .ov-district {
   font-family: var(--serif);
   font-size: 1.15em;
   letter-spacing: 0.06em;
   color: var(--ink);
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .ov-en {
@@ -86,7 +87,7 @@ html, body {
   font-size: 0.72em;
   letter-spacing: 0.14em;
   color: var(--muted);
-  margin-top: 0.15em;
+  margin-top: 0.1em;
   text-transform: uppercase;
 }
 
@@ -95,8 +96,8 @@ html, body {
   font-weight: 700;
   font-size: 1.35em;
   letter-spacing: 0.04em;
-  margin-top: 0.45em;
-  line-height: 1.35;
+  margin-top: 0.3em;
+  line-height: 1.3;
   color: var(--ink);
 }
 
@@ -105,8 +106,8 @@ html, body {
   font-size: 0.78em;
   letter-spacing: 0.02em;
   color: #3a3a3a;
-  margin-top: 0.2em;
-  line-height: 1.3;
+  margin-top: 0.12em;
+  line-height: 1.25;
 }
 
 .ov-map {
@@ -116,6 +117,7 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin: 0;
 }
 
 .ov-map img {
@@ -130,7 +132,8 @@ html, body {
 
 .ov-bottom {
   text-align: center;
-  padding-top: 0.2em;
+  padding-top: 0.05em;
+  padding-bottom: 0.15em;
 }
 
 .ov-footer-cn {
@@ -138,7 +141,7 @@ html, body {
   font-weight: 700;
   font-size: 2.05em;
   letter-spacing: 0.18em;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .ov-footer-en {
@@ -146,7 +149,7 @@ html, body {
   font-size: 0.85em;
   letter-spacing: 0.08em;
   color: #444;
-  margin-top: 0.25em;
+  margin-top: 0.15em;
 }
 
 /* ---------- District pages (2–4) ---------- */
@@ -169,6 +172,34 @@ html, body {
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+/* Page 4: keep mountain mass centered */
+.slide-district[data-page="4"] .map-pane img {
+  object-position: 72% 48%;
+  transform: scale(1.06);
+  transform-origin: 70% 48%;
+}
+
+/* Soft cream feather between map and side panel (all district pages) */
+.map-pane::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 7.5%;
+  min-width: 56px;
+  max-width: 110px;
+  pointer-events: none;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    rgba(249, 247, 242, 0) 0%,
+    rgba(249, 247, 242, 0.35) 42%,
+    rgba(249, 247, 242, 0.82) 78%,
+    rgba(249, 247, 242, 1) 100%
+  );
 }
 
 .side-panel {
@@ -308,4 +339,40 @@ html, body {
   padding: 6px 10px;
   border-radius: 6px;
   pointer-events: none;
+}
+
+/* Fullscreen control */
+.fs-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 30;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  background: rgba(249, 247, 242, 0.88);
+  border: 1px solid rgba(22, 22, 22, 0.12);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  pointer-events: auto;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.fs-btn:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.fs-btn:active {
+  transform: translateY(0);
+}
+
+/* When browser is fullscreen, stage can fill more of the screen */
+:fullscreen .viewport,
+:-webkit-full-screen .viewport {
+  background: #0d0d0d;
 }
